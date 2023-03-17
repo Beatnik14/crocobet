@@ -1,0 +1,60 @@
+.card {
+  border: 0;
+  width: 11rem !important;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  .img {
+    position: relative;
+    div {
+      background-color: #252b33;
+      position: relative;
+      width: 11rem;
+      height: 7rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      &:hover {
+        opacity: 1;
+        background-color: rgb(37, 43, 51, 0.7);
+      }
+    }
+    img {
+      height: 7rem;
+      object-fit: cover;
+    }
+    a {
+      position: absolute;
+      background-color: #15af44;
+      padding: 0.5rem 0.5rem;
+      width: 8.5rem;
+      border: none;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      z-index: 2;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    span {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      color: white;
+    }
+  }
+  .card-body {
+    height: 1rem;
+    background-color: #252b33;
+    color: white;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+    }
+  }
+}

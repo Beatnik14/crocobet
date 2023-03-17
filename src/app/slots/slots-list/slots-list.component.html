@@ -1,0 +1,7 @@
+<div *ngIf="slots$ | async as slots">
+  <div class="wrapper" >
+    <div *ngFor="let slot of slots.data.games" >
+      <app-slot [slot]="slot"></app-slot>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="wrapper" [ngClass]="{ 'min-height': providersListExtended }">
+  <div class="filter-by-category">
+    <ul *ngIf="{ value: selectedCategory$ | async } as selectedCategory">
+      <li
+        *ngFor="let slotFilter of slotsFilters"
+        [disabled]="true"
+        [ngClass]="{ selected: selectedCategory.value === slotFilter.title, disabled: slotFilter.disabled}"
+      >
+        <button
+          [disabled]="slotFilter.disabled"
+          (click)="onCategorySelected(slotFilter)"
+        >
+          <abbr [title]="slotFilter.disabled ? 'You need to log in' : ''">
+            <img [src]="slotFilter.iconPath" alt="slotFilter.title" />
+
+            <p class="badge">
+              {{ slotFilter.title }} <sup>{{ slotFilter.quantity }}</sup>
+            </p>
+          </abbr>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="filter-by-provider">
+    <div class="accordion">
+      <div
+        class="accordion-item"
+        [ngClass]="{ 'enable-full-height': providersListExtended }"
+      >
+        <div class="accordion-header" *ngIf="providers$ | async as providers">
+          <div
+            class="providers"
+            *ngIf="{ value: selectedProvider$ | async } as selectedProvider"
+          >
+            <button
+              *ngFor="let provider of providers.data"
+              (click)="onProviderSelected(provider.provider)"
+              [ngClass]="{
+                selected: selectedProvider.value === provider.provider
+              }"
+            >
+              {{ provider.name }}
+            </button>
+          </div>
+          <div class="toggle">
+            <button (click)="onToggleDisplay()">
+              {{ providersListExtended ? "See Less" : "See More" }}
+            </button>
+            <img
+              src="assets/dropdown.png"
+              alt="dropdown"
+              [ngClass]="{ flip: providersListExtended }"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
