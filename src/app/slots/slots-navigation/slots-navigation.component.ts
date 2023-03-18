@@ -1,10 +1,8 @@
-import { ApiService } from './services/api.service';
 import { AppState } from './../../state/app.state';
 import { SlotsFilters } from './../models/slots-filters.model';
 import { SlotsFiltersService } from './services/slots-filters.service';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { categories } from '../models/categories.model';
 
 import * as AppActions from '../../state/app.actions';
 import * as AppSelectors from '../../state/app.selectors';
@@ -24,13 +22,11 @@ export class SlotsNavigationComponent implements OnInit {
   constructor(
     private slotsFiltersService: SlotsFiltersService,
     private store: Store<AppState>,
-    private api: ApiService
   ) {}
 
   ngOnInit(): void {
     this.slotsFilters = this.slotsFiltersService.getSlotsFilters();
     this.store.dispatch(AppActions.loadProviders());
-    // this.api.getSlotsAndCategories('პოპულარული მთავარზე / ვები').subscribe(console.log)
   }
 
   onCategorySelected(filter: SlotsFilters) {

@@ -5,6 +5,11 @@
     <div>
       <app-slots-navigation></app-slots-navigation>
       <app-slots-list></app-slots-list>
+      <div class="spinner-border text-success spinner" role="status" *ngIf="loading$ | async as loading">
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="error$ | async as error">
+        {{error}}
+      </div>
     </div>
   </div>
 </div>

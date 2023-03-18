@@ -6,6 +6,15 @@
     div {
       display: flex;
       flex-direction: column;
+      .spinner {
+        width: 2rem;
+        display: block;
+        margin: 0 auto;
+      }
+      .alert {
+        width: 90%;
+        margin: 1rem auto;
+      }
     }
   }
 

@@ -1,7 +1,7 @@
 import { ApiService } from './../slots/slots-navigation/services/api.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, map, switchMap, of } from 'rxjs';
 
 import * as AppActions from './app.actions';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -12,13 +12,13 @@ export class AppEffects {
   loadProviders$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(AppActions.loadProviders),
-      mergeMap(() =>
+      switchMap(() =>
         this.apiService.getProviders().pipe(
           map((providers) => AppActions.loadProvidersSuccess({ providers })),
           catchError((err: HttpErrorResponse) =>
             of(
               AppActions.loadProvidersFailure({
-                error: `Failed to get items!: Server responded with: ${err.message}`,
+                error: `Failed to get items! Server responded with: ${err.message}`,
               })
             )
           )
@@ -30,7 +30,7 @@ export class AppEffects {
   loadSlotsByProvider$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(AppActions.loadSlotsByProvider),
-      mergeMap(({id}) =>
+      switchMap(({id}) =>
         this.apiService.getSlotsbyProvider(id).pipe(
           map((slots) => AppActions.loadSlotsByProviderSuccess({ slots })),
           catchError((err: HttpErrorResponse) =>
@@ -45,23 +45,23 @@ export class AppEffects {
     );
   });
 
-  // loadSlotsBySelectedCategory$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(AppActions.loadSlotsByCategory),
-  //     mergeMap(({filter}) =>
-  //       this.apiService.getSlotsAndCategories(filter.apiName).pipe(
-  //         map((slots) => AppActions.loadSlotsByCategorySuccess({ slots })),
-  //         catchError((err: HttpErrorResponse) =>
-  //           of(
-  //             AppActions.loadSlotsByCategoryFailure({
-  //               error: `Failed to get items!: Server responded with: ${err.message}`,
-  //             })
-  //           )
-  //         )
-  //       )
-  //     )
-  //   );
-  // });
+  loadSlotsBySelectedCategory$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AppActions.loadSlotsByCategory),
+      switchMap(({filter}) =>
+        this.apiService.getSlotsAndCategories(filter.apiName).pipe(
+          map((slots) => AppActions.loadSlotsByCategorySuccess({ slots: slots.games })),
+          catchError((err: HttpErrorResponse) =>
+            of(
+              AppActions.loadSlotsByCategoryFailure({
+                error: `Failed to get items!: Server responded with: ${err.message}`,
+              })
+            )
+          )
+        )
+      )
+    );
+  });
 
 
 }

@@ -30,3 +30,17 @@ export const getSlots = createSelector(
     return state.slots;
   }
 );
+
+export const getError = createSelector(
+  getAppStateSelector,
+  (state: AppState) => {
+    return state.error;
+  }
+);
+
+export const getLoading = createSelector(
+  getAppStateSelector,
+  (state: AppState) => {
+    return state.loading;
+  }
+);

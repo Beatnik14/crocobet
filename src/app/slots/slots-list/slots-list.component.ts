@@ -1,3 +1,4 @@
+import { mergeMap } from 'rxjs';
 import { ApiService } from './../slots-navigation/services/api.service';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../state/app.state';
@@ -14,9 +15,13 @@ export class SlotsListComponent implements OnInit {
 
   slots$ = this.store.select(AppSelectors.getSlots)
 
-  constructor(private store: Store<AppState>, private api: ApiService) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    // this.api.getSlotsbyProvider('egt').subscribe(console.log)
+    // this.store.select(AppSelectors.getSelectedCategory).pipe(
+    //   mergeMap((category) => {
+    //     this.store.dispatch(AppActions.loadSlotsByCategory())
+    //   })
+    // )
   }
 }

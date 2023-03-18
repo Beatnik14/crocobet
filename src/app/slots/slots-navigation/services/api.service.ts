@@ -1,3 +1,4 @@
+import { ProviderSlots } from './../../models/provider-slots.model';
 import { Slot } from './../../models/slot.model';
 import { Provider } from './../../models/provider.model';
 import { Injectable } from '@angular/core';
@@ -23,31 +24,29 @@ export class ApiService {
   }
 
   getSlotsbyProvider(providerId: string): Observable<Slot[]> {
-    return this.http.get<Slot[]>(
-      `${this.apiUrl}/v2/slot/providers/${providerId}`,
-      {
-        params: {
-          platform: 'desktop',
-        },
-      }
-    )
+    return this.http
+      .get<{ data: ProviderSlots }>(
+        `${this.apiUrl}/v2/slot/providers/${providerId}`,
+        {
+          params: {
+            platform: 'desktop',
+          },
+        }
+      )
+      .pipe(map((response) => response.data.games));
   }
 
-  // getSlotsAndCategories(filter: string): Observable<Slot[]> {
-  //   return this.http
-  //     .get<Slot[]>(`${this.apiUrl}/v2/slot/categories`, {
-  //       params: {
-  //         include: 'games',
-  //       },
-  //     })
-  //     .pipe(
-  //       map((data: any[]) => {
-  //         console.log(data);
-  //         return data.filter((category) => {
-  //           console.log("Category", category.name)
-  //           return category.name === filter;
-  //         });
-  //       })
-  //     );
-  // }
+  getSlotsAndCategories(filter: string) {
+    return this.http
+      .get<{ data: any[] }>(`${this.apiUrl}/v2/slot/categories`, {
+        params: {
+          include: 'games',
+        },
+      })
+      .pipe(
+        map((response) =>
+          response.data.find((category) => category.name === filter)
+        )
+      );
+  }
 }
