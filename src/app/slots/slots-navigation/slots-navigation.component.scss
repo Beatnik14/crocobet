@@ -1,11 +1,10 @@
 .wrapper {
-  height: 6.6rem;
   background-color: #1d242c;
   margin: 0 0.5rem;
   border-radius: 0.5rem;
   .filter-by-category {
     padding: 0.5rem 1.2rem 0 1.2rem;
-    height: 3.3rem;
+    min-height: 3.3rem;
     display: flex;
     align-items: end;
     ul {
@@ -70,10 +69,11 @@
   }
 
   .filter-by-provider {
-    height: 3.3rem;
     background-color: #272d36;
     .accordion {
       .accordion-item {
+        min-height: 3.3rem;
+
         max-height: 3.5rem;
         overflow: hidden;
         border: none;
@@ -168,10 +168,6 @@
 
 .enable-full-height {
   max-height: none !important;
-}
-
-.min-height {
-  height: 14rem;
 }
 
 .disabled {
