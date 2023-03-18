@@ -18,7 +18,7 @@ export class AppEffects {
           catchError((err: HttpErrorResponse) =>
             of(
               AppActions.loadProvidersFailure({
-                error: `Failed to get items! Server responded with: ${err.message}`,
+                error: `Failed to get items. Server responded with: ${err.message}`,
               })
             )
           )
@@ -36,7 +36,7 @@ export class AppEffects {
           catchError((err: HttpErrorResponse) =>
             of(
               AppActions.loadSlotsByProviderFailure({
-                error: `Failed to get items!: Server responded with: ${err.message}`,
+                error: `Failed to get items. Server responded with: ${err.message}`,
               })
             )
           )
@@ -54,7 +54,7 @@ export class AppEffects {
           catchError((err: HttpErrorResponse) =>
             of(
               AppActions.loadSlotsByCategoryFailure({
-                error: `Failed to get items!: Server responded with: ${err.message}`,
+                error: `Failed to get items. Server responded with: ${err.message}`,
               })
             )
           )

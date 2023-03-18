@@ -1,4 +1,5 @@
-import { mergeMap } from 'rxjs';
+import { SlotsFiltersService } from './../slots-navigation/services/slots-filters.service';
+import { mergeMap, map } from 'rxjs';
 import { ApiService } from './../slots-navigation/services/api.service';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../state/app.state';
@@ -12,16 +13,39 @@ import * as AppSelectors from '../../state/app.selectors';
   styleUrls: ['./slots-list.component.scss'],
 })
 export class SlotsListComponent implements OnInit {
+  slots$ = this.store.select(AppSelectors.getSlots);
 
-  slots$ = this.store.select(AppSelectors.getSlots)
-
-  constructor(private store: Store<AppState>) {}
+  constructor(
+    private store: Store<AppState>,
+    private slotsFiltersService: SlotsFiltersService
+  ) {}
 
   ngOnInit(): void {
-    // this.store.select(AppSelectors.getSelectedCategory).pipe(
-    //   mergeMap((category) => {
-    //     this.store.dispatch(AppActions.loadSlotsByCategory())
+    // this.store.dispatch(
+    //   AppActions.loadSlotsByCategory({
+    //     filter: {
+    //       iconPath: 'assets/slot-filters/best-seller.png',
+    //       title: 'Top Slots',
+    //       quantity: 25,
+    //       disabled: false,
+    //       apiName: 'პოპულარული მთავარზე / ვები',
+    //     },
     //   })
+    // );
+    // this.store
+    // .select(AppSelectors.getSelectedCategory)
+    // .pipe(
+    //   mergeMap((category) =>
+    //     this.slotsFiltersService
+    //       .getSlotsFilter(category)
+    //       .pipe(
+    //         map((slotFilter) =>
+    //           this.store.dispatch(
+    //             AppActions.loadSlotsByCategory({ filter: slotFilter })
+    //           )
+    //         )
+    //       )
+    //   )
     // )
   }
 }

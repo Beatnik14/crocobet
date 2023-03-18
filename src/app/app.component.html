@@ -4,8 +4,10 @@
     <app-header></app-header>
     <div>
       <app-slots-navigation></app-slots-navigation>
-      <app-slots-list></app-slots-list>
-      <div class="spinner-border text-success spinner" role="status" *ngIf="loading$ | async as loading">
+      <ng-template #slots>
+        <app-slots-list></app-slots-list>
+      </ng-template>
+      <div class="spinner-border text-success spinner" role="status" *ngIf="loading$ | async as loading; else slots">
       </div>
       <div class="alert alert-success" role="alert" *ngIf="error$ | async as error">
         {{error}}
