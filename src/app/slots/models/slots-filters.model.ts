@@ -5,4 +5,5 @@ export interface SlotsFilters {
   quantity: number;
   disabled: boolean;
   apiName: string;
+  default: boolean;
 }

@@ -1,6 +1,5 @@
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../state/app.state';
-import { Observable, of } from 'rxjs';
 import { SlotsFilters } from '../../models/slots-filters.model';
 import { Injectable } from '@angular/core';
 
@@ -8,8 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SlotsFiltersService {
-
-  constructor(private store: Store<AppState>){}
+  constructor(private store: Store<AppState>) {}
 
   private slotsFilters: SlotsFilters[] = [
     {
@@ -18,6 +16,7 @@ export class SlotsFiltersService {
       quantity: 25,
       disabled: false,
       apiName: 'პოპულარული / ვები',
+      default: true,
     },
     {
       iconPath: 'assets/slot-filters/star (15).png',
@@ -25,6 +24,7 @@ export class SlotsFiltersService {
       quantity: 125,
       disabled: false,
       apiName: 'პოპულარული მთავარზე / ვები',
+      default: true,
     },
     {
       iconPath: 'assets/slot-filters/new.png',
@@ -32,6 +32,7 @@ export class SlotsFiltersService {
       quantity: 125,
       disabled: false,
       apiName: 'ახალი თამაშები',
+      default: true,
     },
     {
       iconPath: 'assets/slot-filters/giftbox.png',
@@ -39,6 +40,7 @@ export class SlotsFiltersService {
       quantity: 125,
       disabled: false,
       apiName: 'BUY BONUS',
+      default: true,
     },
     {
       iconPath: 'assets/slot-filters/history.png',
@@ -46,6 +48,7 @@ export class SlotsFiltersService {
       quantity: 125,
       disabled: true,
       apiName: '',
+      default: true,
     },
   ];
 
@@ -53,7 +56,7 @@ export class SlotsFiltersService {
     return [...this.slotsFilters];
   }
 
-  getInitialSlotsFilter(){
-    return this.slotsFilters[0]
+  getInitialSlotsFilter() {
+    return this.slotsFilters.find(filters => filters.default);
   }
 }

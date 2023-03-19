@@ -1,7 +1,7 @@
 import { ApiService } from './../slots/slots-navigation/services/api.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, switchMap, of } from 'rxjs';
+import { catchError, map, switchMap, of, mergeMap } from 'rxjs';
 
 import * as AppActions from './app.actions';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -12,7 +12,7 @@ export class AppEffects {
   loadProviders$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(AppActions.loadProviders),
-      switchMap(() =>
+      mergeMap(() =>
         this.apiService.getProviders().pipe(
           map((providers) => AppActions.loadProvidersSuccess({ providers })),
           catchError((err: HttpErrorResponse) =>

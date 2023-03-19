@@ -1,6 +1,4 @@
 import { SlotsFiltersService } from './slots/slots-navigation/services/slots-filters.service';
-import { SlotsFilters } from './slots/models/slots-filters.model';
-import { mergeMap, map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from './state/app.state';
 import { Component, OnInit } from '@angular/core';
