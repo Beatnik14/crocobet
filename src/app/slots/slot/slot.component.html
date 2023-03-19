@@ -1,6 +1,7 @@
 <div class="card" style="width: 18rem">
   <div class="img">
     <img [src]="slot.image" class="card-img-top" [alt]="slot.name" />
+    <span class="new" *ngIf="slot.tags.length > 0">{{slot.tags[0] | titlecase}}</span>
     <div>
       <a class="btn btn-primary">Play</a>
       <span>{{slot.provider | shorten : 8 | uppercase}}</span>

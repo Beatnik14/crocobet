@@ -2,7 +2,6 @@ import { SlotsFilters } from './../slots/models/slots-filters.model';
 import { Slot } from './../slots/models/slot.model';
 import { Provider } from './../slots/models/provider.model';
 import { createAction, props } from '@ngrx/store';
-import { categories } from '../slots/models/categories.model';
 
 //Load Slot By Category
 export const loadSlotsByCategory = createAction(

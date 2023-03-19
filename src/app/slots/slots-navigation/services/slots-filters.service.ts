@@ -1,5 +1,3 @@
-import { Store } from '@ngrx/store';
-import { AppState } from './../../../state/app.state';
 import { SlotsFilters } from '../../models/slots-filters.model';
 import { Injectable } from '@angular/core';
 
@@ -7,7 +5,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SlotsFiltersService {
-  constructor(private store: Store<AppState>) {}
 
   private slotsFilters: SlotsFilters[] = [
     {

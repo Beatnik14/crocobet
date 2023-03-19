@@ -2,9 +2,9 @@ import { ApiService } from './../slots/slots-navigation/services/api.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, of, mergeMap } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import * as AppActions from './app.actions';
-import { HttpErrorResponse } from '@angular/common/http';
 @Injectable()
 export class AppEffects {
   constructor(private actions$: Actions, private apiService: ApiService) {}
@@ -18,7 +18,7 @@ export class AppEffects {
           catchError((err: HttpErrorResponse) =>
             of(
               AppActions.loadProvidersFailure({
-                error: `Failed to get items. Server responded with: ${err.message}`,
+                error: `Failed to get providers. Server responded with: ${err.message}`,
               })
             )
           )
@@ -36,7 +36,7 @@ export class AppEffects {
           catchError((err: HttpErrorResponse) =>
             of(
               AppActions.loadSlotsByProviderFailure({
-                error: `Failed to get items. Server responded with: ${err.message}`,
+                error: `Failed to get slots. Server responded with: ${err.message}`,
               })
             )
           )
@@ -54,7 +54,7 @@ export class AppEffects {
           catchError((err: HttpErrorResponse) =>
             of(
               AppActions.loadSlotsByCategoryFailure({
-                error: `Failed to get items. Server responded with: ${err.message}`,
+                error: `Failed to get slots. Server responded with: ${err.message}`,
               })
             )
           )

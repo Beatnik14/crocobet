@@ -45,12 +45,13 @@
           <div class="toggle">
             <button (click)="onToggleDisplay()">
               {{ providersListExtended ? "See Less" : "See More" }}
-            </button>
-            <img
+              <img
               src="assets/dropdown.png"
               alt="dropdown"
               [ngClass]="{ flip: providersListExtended }"
             />
+            </button>
+
           </div>
         </div>
       </div>

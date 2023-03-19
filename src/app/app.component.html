@@ -7,7 +7,7 @@
       <ng-template #slots>
         <app-slots-list></app-slots-list>
       </ng-template>
-      <div class="spinner-border text-success spinner" role="status" *ngIf="loading$ | async as loading; else slots">
+      <div class="spinner-border text-success spinner" role="status" *ngIf="loading$ | async; else slots">
       </div>
       <div class="alert alert-success" role="alert" *ngIf="error$ | async as error">
         {{error}}

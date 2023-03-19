@@ -27,23 +27,29 @@
     a {
       position: absolute;
       background-color: #15af44;
-      padding: 0.5rem 0.5rem;
-      width: 8.5rem;
+      padding: 0.2rem 0.4rem;
+      width: 8rem;
       border: none;
       top: 60%;
       left: 50%;
       transform: translate(-50%, -50%);
-      opacity: 0;
       z-index: 2;
-      &:hover {
-        opacity: 1;
-      }
     }
     span {
       position: absolute;
       top: 10%;
       left: 10%;
       color: white;
+    }
+    .new {
+      font-size: 0.6rem;
+      padding: 0.1rem 0.2rem;
+      border-radius: 10%;
+      background-color: #15af44;
+      color: #fff;
+      &:hover {
+        display: none;
+      }
     }
   }
   .card-body {
