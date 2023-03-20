@@ -30,7 +30,7 @@ export class AppEffects {
   loadSlotsByProvider$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(AppActions.loadSlotsByProvider),
-      switchMap(({id}) =>
+      switchMap(({ id }) =>
         this.apiService.getSlotsbyProvider(id).pipe(
           map((slots) => AppActions.loadSlotsByProviderSuccess({ slots })),
           catchError((err: HttpErrorResponse) =>
@@ -48,9 +48,11 @@ export class AppEffects {
   loadSlotsBySelectedCategory$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(AppActions.loadSlotsByCategory),
-      switchMap(({filter}) =>
+      switchMap(({ filter }) =>
         this.apiService.getSlotsAndCategories(filter.apiName).pipe(
-          map((slots) => AppActions.loadSlotsByCategorySuccess({ slots: slots.games })),
+          map((slots) =>
+            AppActions.loadSlotsByCategorySuccess({ slots: slots.games })
+          ),
           catchError((err: HttpErrorResponse) =>
             of(
               AppActions.loadSlotsByCategoryFailure({
@@ -62,6 +64,4 @@ export class AppEffects {
       )
     );
   });
-
-
 }

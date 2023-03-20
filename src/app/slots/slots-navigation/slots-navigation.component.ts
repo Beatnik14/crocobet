@@ -17,11 +17,11 @@ export class SlotsNavigationComponent implements OnInit {
   providersListExtended = false;
   selectedCategory$ = this.store.select(AppSelectors.getSelectedCategory);
   selectedProvider$ = this.store.select(AppSelectors.getSelectedProvider);
-  providers$ = this.store.select(AppSelectors.getProviders)
+  providers$ = this.store.select(AppSelectors.getProviders);
 
   constructor(
     private slotsFiltersService: SlotsFiltersService,
-    private store: Store<AppState>,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +38,6 @@ export class SlotsNavigationComponent implements OnInit {
   }
 
   onProviderSelected(id: string) {
-    this.store.dispatch(AppActions.loadSlotsByProvider({id}))
+    this.store.dispatch(AppActions.loadSlotsByProvider({ id }));
   }
 }

@@ -19,11 +19,8 @@ export const loadSlotsByCategoryFailure = createAction(
   props<{ error: string }>()
 );
 
-
 //Load Providers
-export const loadProviders = createAction(
-  '[App] Load Providers',
-);
+export const loadProviders = createAction('[App] Load Providers');
 
 export const loadProvidersSuccess = createAction(
   '[App] Load Providers Success',

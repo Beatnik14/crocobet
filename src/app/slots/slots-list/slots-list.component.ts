@@ -11,9 +11,7 @@ import * as AppSelectors from '../../state/app.selectors';
 export class SlotsListComponent implements OnInit {
   slots$ = this.store.select(AppSelectors.getSlots);
 
-  constructor(
-    private store: Store<AppState>,
-  ) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {}
 }

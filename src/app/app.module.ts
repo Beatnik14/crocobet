@@ -24,16 +24,19 @@ import { ShortenPipe } from './pipes/shorten.pipe';
     SlotsNavigationComponent,
     SlotComponent,
     SlotsListComponent,
-    ShortenPipe
+    ShortenPipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    StoreModule.forRoot({app: appReducer}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forRoot({ app: appReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     EffectsModule.forRoot([AppEffects]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

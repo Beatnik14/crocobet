@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SlotsFiltersService {
-
   private slotsFilters: SlotsFilters[] = [
     {
       iconPath: 'assets/slot-filters/best-seller.png',
@@ -54,6 +53,6 @@ export class SlotsFiltersService {
   }
 
   getInitialSlotsFilter() {
-    return this.slotsFilters.find(filters => filters.default);
+    return this.slotsFilters.find((filters) => filters.default);
   }
 }

@@ -4,7 +4,10 @@
       <li
         *ngFor="let slotFilter of slotsFilters"
         [disabled]="true"
-        [ngClass]="{ selected: selectedCategory.value === slotFilter.title, disabled: slotFilter.disabled}"
+        [ngClass]="{
+          selected: selectedCategory.value === slotFilter.title,
+          disabled: slotFilter.disabled
+        }"
       >
         <button
           [disabled]="slotFilter.disabled"
@@ -46,12 +49,11 @@
             <button (click)="onToggleDisplay()">
               {{ providersListExtended ? "See Less" : "See More" }}
               <img
-              src="assets/dropdown.png"
-              alt="dropdown"
-              [ngClass]="{ flip: providersListExtended }"
-            />
+                src="assets/dropdown.png"
+                alt="dropdown"
+                [ngClass]="{ flip: providersListExtended }"
+              />
             </button>
-
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 <div *ngIf="slots$ | async as slots">
-  <div class="wrapper" >
-    <div *ngFor="let slot of slots" >
+  <div class="wrapper">
+    <div *ngFor="let slot of slots">
       <app-slot [slot]="slot"></app-slot>
     </div>
   </div>
