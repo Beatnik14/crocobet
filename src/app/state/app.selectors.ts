@@ -1,5 +1,5 @@
 import { AppState } from './app.state';
-import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 const getAppStateSelector = createFeatureSelector<AppState>('app');
 

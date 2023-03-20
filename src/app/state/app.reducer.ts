@@ -12,7 +12,7 @@ export const appReducer = createReducer(
       ...state,
       selectedCategory: data.filter.title,
       selectedProvider: null,
-      loading: true
+      loading: true,
     };
   }),
 
